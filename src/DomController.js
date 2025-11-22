@@ -4,6 +4,13 @@ class DOMController {
     constructor() {
         this.library = new Library();
 
+        const loaded = this.library.loadFromLocalStorage();
+        if (loaded) {
+            console.log("Loaded saved data!");
+        } else {
+            console.log("No saved data — starting fresh");
+        }
+
         this.projectList = document.querySelector('.project-names ul');
         this.todoList = document.querySelector('.todo-names ul');
         this.detailList = document.querySelector('.todo-details ul');
@@ -95,6 +102,7 @@ class DOMController {
         if (name) {
             this.library.createProject(name);
             this.render();
+            this.library.saveToLocalStorage();
         }
     }
 
@@ -103,6 +111,7 @@ class DOMController {
         if (newName) {
             this.library.editProject(newName);
             this.render();
+            this.library.saveToLocalStorage();
         }
     }
 
@@ -118,6 +127,7 @@ class DOMController {
             // Switch to first remaining project
             this.library.setActiveProject(this.library.getProjects()[0] || null);
             this.render();
+            this.library.saveToLocalStorage();
         }
     }
 
@@ -127,6 +137,7 @@ class DOMController {
             const todo = this.library.createTodo(title);
             this.library.getActiveProject().addTodo(todo);
             this.render();
+            this.library.saveToLocalStorage();
         }
     }
 
@@ -141,6 +152,7 @@ class DOMController {
 
         this.library.editTodo(title, desc, date, prio);
         this.render();
+        this.library.saveToLocalStorage();
     }
 
     handleDeleteTodo() {
@@ -151,6 +163,7 @@ class DOMController {
             this.library.getActiveProject().removeTodo(index);
             this.library.setActiveTodo(null);
             this.render();
+            this.library.saveToLocalStorage();
         }
     }
 }

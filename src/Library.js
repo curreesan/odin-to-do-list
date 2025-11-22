@@ -5,10 +5,10 @@ class Library {
     constructor() {
         this.projects = [];
 
-        this.activeProject = new Project("edit project");
+        this.activeProject = new Project("first project");
         this.projects.push(this.activeProject);
 
-        this.activeTodo = new Todo("edit title", "edit description", "edit due date", "edit priority: low/normal/high");
+        this.activeTodo = new Todo("first task");
         this.activeProject.addTodo(this.activeTodo);
     }
 
@@ -61,6 +61,59 @@ class Library {
         return this.projects;
     }
 
+    //localStorage
+    saveToLocalStorage() {
+        const data = {
+            projects: this.projects.map(project => ({
+                name: project.name,
+                todos: project.todos.map(todo => ({
+                    title: todo.title,
+                    description: todo.description,
+                    dueDate: todo.dueDate,
+                    priority: todo.priority,
+                    isCompleted: todo.isCompleted
+                }))
+            })),
+            activeProjectIndex: this.projects.indexOf(this.activeProject),
+            activeTodoIndex: this.activeProject ? this.activeProject.getTodos().indexOf(this.activeTodo) : -1
+        };
+        localStorage.setItem('todoApp', JSON.stringify(data));
+    }
+    
+    loadFromLocalStorage() {
+        const data = JSON.parse(localStorage.getItem('todoApp'));
+        if (!data) return false;
+        
+        // Clear current projects
+        this.projects = [];
+
+        // Recreate projects and todos
+        data.projects.forEach(projData => {
+            const project = new Project(projData.name);
+            projData.todos.forEach(todoData => {
+                const todo = new Todo(
+                    todoData.title,
+                    todoData.description,
+                    todoData.dueDate,
+                    todoData.priority,
+                    todoData.isCompleted
+                );
+                project.addTodo(todo);
+            });
+            this.projects.push(project);
+        });
+        
+        // Restore active project
+        this.activeProject = this.projects[data.activeProjectIndex] || this.projects[0];
+
+        // Restore active todo
+        if (this.activeProject && data.activeTodoIndex !== -1) {
+            this.activeTodo = this.activeProject.getTodos()[data.activeTodoIndex];
+        } else {
+            this.activeTodo = null;
+        }
+        return true;
+    }
 }
 
 export { Library };
