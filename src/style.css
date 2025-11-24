@@ -1,111 +1,111 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #f0f2f5;
-    color: #333;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f0f2f5;
+  color: #333;
 }
 
 .container {
-    display: grid;
-    grid-template-columns: 30% 30% 40%; 
-    height: 100vh;                         
-    width: 100vw;
+  display: grid;
+  grid-template-columns: 30% 30% 40%;
+  height: 100vh;
+  width: 100vw;
 }
 
 /* All three columns */
 .project,
 .todo,
 .todo-full-detail {
-    padding: 20px;
-    border-right: 1px solid #ddd;
-    overflow-y: auto;                     /* Scroll if content is too long */
-    background-color: white;
+  padding: 20px;
+  border-right: 1px solid #ddd;
+  overflow-y: auto; /* Scroll if content is too long */
+  background-color: white;
 }
 
 /* Remove border from the last column */
 .todo-full-detail {
-    border-right: none;
+  border-right: none;
 }
 
 /* Titles */
 .title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    color: #2c3e50;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  color: #2c3e50;
 }
 
 /* Buttons area */
 .project-btns,
 .todo-btns {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 /* All buttons */
 .btn {
-    padding: 12px;
-    margin-bottom: 8px;
-    background-color: #3498db;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-size: 1rem;
-    cursor: pointer;
+  padding: 12px;
+  margin-bottom: 8px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
 }
 
 .btn:hover {
-    background-color: #2980b9;
+  background-color: #2980b9;
 }
 
 /* Lists */
 .project-names ul,
 .todo-names ul,
 .todo-details ul {
-    list-style: none;
+  list-style: none;
 }
 
 .project-names li,
 .todo-names li {
-    padding: 12px;
-    background-color: #f8f9fa;
-    margin-bottom: 8px;
-    border-radius: 6px;
-    cursor: pointer;
-    border-left: 4px solid #3498db;
+  padding: 12px;
+  background-color: #f8f9fa;
+  margin-bottom: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  border-left: 4px solid #3498db;
 }
 
 .project-names li:hover,
 .todo-names li:hover {
-    background-color: #e9ecef;
+  background-color: #e9ecef;
 }
 
 /* Active/selected item highlight */
 .project-names li.active,
 .todo-names li.active {
-    background-color: #3498db;
-    color: white;
-    font-weight: bold;
+  background-color: #3498db;
+  color: white;
+  font-weight: bold;
 }
 
 /* Todo details panel */
 .todo-details ul {
-    padding: 20px;
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    min-height: 300px;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  min-height: 300px;
 }
 
 .todo-details li {
-    margin-bottom: 15px;
-    line-height: 1.6;
+  margin-bottom: 15px;
+  line-height: 1.6;
 }
 
 .todo-details strong {
-    color: #2c3e50;
+  color: #2c3e50;
 }

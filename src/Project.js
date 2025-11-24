@@ -1,26 +1,26 @@
 class Project {
-    constructor(name) {
-        this.name = name;
-        this.todos = [];
-    }
-    
-    addTodo(todo) {
-        this.todos.push(todo);
-    }
+  constructor(name) {
+    this.name = name;
+    this.todos = [];
+  }
 
-    removeTodo(todoIndex) {
-        if (todoIndex >=0 && todoIndex < this.todos.length) {
-            this.todos.splice(todoIndex, 1);
-        }
-    }
+  addTodo(todo) {
+    this.todos.push(todo);
+  }
 
-    getTodos() {
-        return this.todos;
+  removeTodo(todoIndex) {
+    if (todoIndex >= 0 && todoIndex < this.todos.length) {
+      this.todos.splice(todoIndex, 1);
     }
+  }
 
-    getProjectName() {
-        return this.name;
-    }
+  getTodos() {
+    return this.todos;
+  }
+
+  getProjectName() {
+    return this.name;
+  }
 }
 
-export {Project};
+export { Project };

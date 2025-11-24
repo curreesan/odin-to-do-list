@@ -1,15 +1,21 @@
 class Todo {
-    constructor(title, description= "", dueDate = "", priority="", isCompleted = false) {
-        this.title = title;
-        this.description = description;
-        this.dueDate = dueDate;
-        this.priority = priority;
-        this.isCompleted = isCompleted;
-    }
+  constructor(
+    title,
+    description = "",
+    dueDate = "",
+    priority = "",
+    isCompleted = false
+  ) {
+    this.title = title;
+    this.description = description;
+    this.dueDate = dueDate;
+    this.priority = priority;
+    this.isCompleted = isCompleted;
+  }
 
-    toggleCompleted() {
-        this.isCompleted = !this.isCompleted;
-    }
+  toggleCompleted() {
+    this.isCompleted = !this.isCompleted;
+  }
 }
 
-export {Todo};
+export { Todo };
